@@ -138,6 +138,14 @@
         be logged in the access log using the new <code>%{peer}a</code>
         syntax. (rjung)
       </add>
+      <fix>
+        Avoid uncaught InaccessibleObjectException on Java 16 trying to clear
+        references threads. (remm)
+      </fix>
+      <fix>
+        <bug>65033</bug>: Fix JNDI realm error handling when connecting to a
+        failed server when pooling was not enabled. (remm)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -147,6 +155,13 @@
         combination with the Servlet non-blocking IO API. It was possible that
         some requests could get dropped. (markt)
       </fix>
+      <add>
+        Add support for using Unix domain sockets for NIO when running
+        on Java 16 or later. This uses NIO specific
+        <code>unixDomainSocketPath</code> and
+        <code>unixDomainSocketPathPermissions</code> attributes.
+        Based on a PR submitted by Graham Leggett. (remm)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Jasper">
